@@ -60,22 +60,21 @@ class Chat:
         self.message_id = msg['message_id']
 
         self.messages = {
-            'start':'🤖 Hello, '+ self.user_name +'!\n\n'
-                    '📩 Send me:\n\n'
-                    '"*/music* _song name_"  or\n'
-                    '"*/music* _musician name - song name_"\n\n'
-                    'to order some music. 🎶',
+            'start':'🤖 Hallo, '+ self.user_name +'!\n\n'
+                    '📩 Kirimi saya:\n\n'
+                    '"** _nama lagu_"  atau\n'
+                    '"** _nama musisi - nama lagu_"\n\n'
+                    'untuk memesan musik. 🎶',
             
-            'spotify_input_error':"‼️ *Oops! The bot doesn't support Spotify links!*\n"
-                    'Try: "*/music* _song name_"\n'
-                    'or: "*/music* _musician name - song name_"',
+            'spotify_input_error':"‼️ **Ups! Bot tidak mendukung tautan Spotify!*\n"
+                    'mencoba: "** _nama lagu_"\n'
+                    'atau: "** _nama musisi - nama lagu_"',
 
-            'invalid_command':'‼️ *Oops! Invalid command!*\n'
-                    'Try: "*/music* _song name_"\n'
-                    'or: "*/music* _musician name - song name_"',
-
-            'too_long':'‼️ *Oops! Video too long to convert!*\n'
-                    'Order something 30 minutes or less.'
+            'invalid_command':'‼️ *Ups! Perintah tidak valid!*\n'
+                    'mencoba: "** _nama lagu_"\n'
+                    'atau: "** _nama musisi - nama lagu_"',
+            'too_long':'‼️ **Ups! Video terlalu panjang untuk dikonversi!*\n'
+                    'Pesan sesuatu dalam waktu 30 menit atau kurang.'
 
 
         }
@@ -128,7 +127,7 @@ class Chat:
         if user_input.startswith('/start'):
             self.send_message(self.messages['start'])
 
-        elif user_input.startswith('/music') and user_input[6:]!='':
+        elif user_input.startswith('') and user_input[6:]!='':
             if 'open.spotify.com' in user_input[6:]:
                 self.send_message(self.messages['spotify_input_error'])
 
