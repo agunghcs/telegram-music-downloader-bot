@@ -31,7 +31,7 @@ class Music:
         result = result['result'][0]['duration'].split(':')
         min_duration = int(result[0])
         split_count = len(result)
-        
+
         return min_duration, split_count
 
     def download_music(self, file_name, link):
@@ -60,21 +60,22 @@ class Chat:
         self.message_id = msg['message_id']
 
         self.messages = {
-            'start':'🤖 Hallo, '+ self.user_name +'!\n\n'
-                    '📩 Kirimi saya:\n\n'
-                    '"** _nama lagu_"  atau\n'
-                    '"** _nama musisi - nama lagu_"\n\n'
-                    'untuk memesan musik. 🎶',
-            
-            'spotify_input_error':"‼️ **Ups! Bot tidak mendukung tautan Spotify!*\n"
-                    'mencoba: "** _nama lagu_"\n'
-                    'atau: "** _nama musisi - nama lagu_"',
+            'start':'🤖 Hello, '+ self.user_name +'!\n\n'
+                    '📩 Send me:\n\n'
+                    '"*/music* _song name_"  or\n'
+                    '"*/music* _musician name - song name_"\n\n'
+                    'to order some music. 🎶',
 
-            'invalid_command':'‼️ *Ups! Perintah tidak valid!*\n'
-                    'mencoba: "** _nama lagu_"\n'
-                    'atau: "** _nama musisi - nama lagu_"',
-            'too_long':'‼️ **Ups! Video terlalu panjang untuk dikonversi!*\n'
-                    'Pesan sesuatu dalam waktu 30 menit atau kurang.'
+            'spotify_input_error':"‼️ *Oops! The bot doesn't support Spotify links!*\n"
+                    'Try: "*/music* _song name_"\n'
+                    'or: "*/music* _musician name - song name_"',
+
+            'invalid_command':'‼️ *Oops! Invalid command!*\n'
+                    'Try: "*/music* _song name_"\n'
+                    'or: "*/music* _musician name - song name_"',
+
+            'too_long':'‼️ *Oops! Video too long to convert!*\n'
+                    'Order something 30 minutes or less.'
 
 
         }
@@ -143,6 +144,6 @@ class Chat:
 
 def start_new_chat(msg):
     Process(target=Chat, args=(msg,)).start()
-    
+
 
 bot.message_loop(start_new_chat, run_forever=True)
